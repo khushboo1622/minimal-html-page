@@ -2,16 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Minimal Page</title>
+  <title>Simple Tabs Page</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; line-height: 1.6; color: #333; }
-    h1 { font-size: 28px; }
-    p { font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #333;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+
+    .tabs button.active {
+      background-color: #ddd;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to This Page</h1>
-  <p>This is a single, standalone HTML page used for quick testing and scraping.</p>
-  <p>No navigation. No links. No JavaScript. Just clean text and simple CSS.</p>
+
+  <h1>Scraper Test Page with Tabs</h1>
+
+  <div class="tabs">
+    <button onclick="showTab('home')" class="active">Home</button>
+    <button onclick="showTab('about')">About</button>
+    <button onclick="showTab('contact')">Contact</button>
+  </div>
+
+  <div id="home" class="tab-content active">
+    <h2>Welcome to Home</h2>
+    <p>This is the main section. It contains a longer body of text for scraping tests. You can evaluate tag structure, paragraph extraction, and layout parsing here.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere viverra turpis at sollicitudin.</p>
+  </div>
+
+  <div id="about" class="tab-content">
+    <h2>About</h2>
+    <p>This tab contains two short lines.</p>
+    <p>Just enough for scraping test.</p>
+  </div>
+
+  <div id="contact" class="tab-content">
+    <h2>Contact</h2>
+    <p>Email: example@example.com</p>
+    <p>Phone: +91-00000-00000</p>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(div => {
+        div.classList.remove('active');
+      });
+      document.querySelectorAll('.tabs button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
